@@ -574,7 +574,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
+#define HEATER_0_MAXTEMP 600
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -582,7 +582,7 @@
 #define HEATER_5_MAXTEMP 275
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP 120
+#define BED_MAXTEMP 300
 #define CHAMBER_MAXTEMP 60
 
 /**
@@ -1036,7 +1036,7 @@
 #endif
 #endif
 
-#define DEFAULT_EJERK 10.0 // May be used by Linear Advance
+#define DEFAULT_EJERK 2.0 // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -1586,7 +1586,7 @@
 //#define AUTO_BED_LEVELING_LINEAR
 // #define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
-// #define MESH_BED_LEVELING
+//#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of

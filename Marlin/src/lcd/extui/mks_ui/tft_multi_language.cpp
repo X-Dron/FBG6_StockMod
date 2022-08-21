@@ -68,6 +68,9 @@ layout_menu_def              layout_menu;
 machine_common_def machine_menu;
 void machine_setting_disp() {
   if (gCfgItems.language == LANG_SIMPLE_CHINESE) {
+    file_menu.no_file           = NO_FILE_EN;
+    file_menu.no_file_and_check = NO_FILE_EN;
+
     MachinePara_menu.title              = MACHINE_PARA_TITLE_CN;
     MachinePara_menu.MachineSetting     = MACHINE_TYPE_CNOFIG_CN;
     MachinePara_menu.MotorSetting       = MOTOR_CONFIG_CN;
@@ -1205,6 +1208,8 @@ void disp_language_init() {
       eeprom_menu.storeTips        = EEPROM_STORE_TIPS_CN;
       eeprom_menu.readTips         = EEPROM_READ_TIPS_CN;
       eeprom_menu.revertTips       = EEPROM_REVERT_TIPS_CN;
+      
+      dialog_menu.recovery_text = DIALOG_TEXT_CN;
       break;
 
       #if 1
@@ -2115,8 +2120,11 @@ void disp_language_init() {
 //             eeprom_menu.revertTips       = EEPROM_REVERT_TIPS_RU;
 //             break;
             #pragma endregion
+
+            dialog_menu.complete_btn = DIALOG_COMPLETE_BTN_RU;
+            dialog_menu.print_again  = DIALOG_PRINT_AGAIN_BTN_RU;
           
-            tips_menu.joining      = TEXT_WIFI_JOINING_EN;
+            tips_menu.joining      = TEXT_WIFI_JOINING_RU;
             tips_menu.failedJoin   = TEXT_WIFI_FAILED_JOIN_EN;
             tips_menu.wifiConected = TEXT_WIFI_WIFI_CONECTED_EN;
 
@@ -2141,7 +2149,7 @@ void disp_language_init() {
             main_menu.more         = MORE_TEXT_RU;
             main_menu.tool         = TOOL_TEXT_RU;
             main_menu.filament     = FILAMENT_TEXT_RU;
-            main_menu.emergency     = EMERGENCY_TEXT_EN;
+            main_menu.emergency     = EMERGENCY_TEXT_RU;
             // TOOL
             tool_menu.title        = TOOL_TEXT_RU;
             tool_menu.preheat      = TOOL_PREHEAT_RU;
@@ -2156,14 +2164,14 @@ void disp_language_init() {
             tool_menu.filament     = TOOL_FILAMENT_RU;
             tool_menu.more         = TOOL_MORE_RU;
             tool_menu.leveling     = TOOL_LEVELING_RU;
-            tool_menu.tempsetting  = TOOL_TEMPSETING_EN;
+            tool_menu.tempsetting  = TOOL_TEMPSETING_RU;
             tool_menu.wifi         = TOOL_WIFI_EN;
-            tool_menu.advances     = TOOL_ADVANCES_EN;
+            tool_menu.advances     = TOOL_ADVANCES_RU;
 
-            tool_menu.endstop      = TOOL_ENDSTOP_EN;
-            tool_menu.voice        = TOOL_VOICE_EN;
-            tool_menu.language     = TOOL_LANGUAGE_EN;
-            tool_menu.about        = TOOL_ABOUT_EN;
+            tool_menu.endstop      = TOOL_ENDSTOP_RU;
+            tool_menu.voice        = TOOL_VOICE_RU;
+            tool_menu.language     = TOOL_LANGUAGE_RU;
+            tool_menu.about        = TOOL_ABOUT_RU;
             //
             preheat_menu.adjust_title = TITLE_ADJUST_RU;
             preheat_menu.title        = TITLE_PREHEAT_RU;
@@ -2174,47 +2182,47 @@ void disp_language_init() {
             preheat_menu.hotbed       = HEATBED_TEXT_RU;
             preheat_menu.off          = CLOSE_TEXT_RU;
 
-            endstop_menu.title = ENDSTOP_TITLE_EN;
-            endstop_menu.open = ENDSTOP_OPEN_EN;
-            endstop_menu.trigger = ENDSTOP_TRIGGER_EN;
+            endstop_menu.title = ENDSTOP_TITLE_RU;
+            endstop_menu.open = ENDSTOP_OPEN_RU;
+            endstop_menu.trigger = ENDSTOP_TRIGGER_RU;
             endstop_menu.x_endstop = ENDSTOP_X_EN;
             endstop_menu.y_endstop = ENDSTOP_Y_EN;
             endstop_menu.z_endstop = ENDSTOP_Z_EN;
-            endstop_menu.det_break = ENDSTOP_DET_BREAK_EN;
-            endstop_menu.flame_sensor = ENDSTOP_FLAME_EN;
+            endstop_menu.det_break = ENDSTOP_DET_BREAK_RU;
+            endstop_menu.flame_sensor = ENDSTOP_FLAME_SENSOR_RU;
 
-            dialog_menu.recovery_text = DIALOG_TEXT_EN;
+            dialog_menu.recovery_text = DIALOG_TEXT_RU;
             dialog_menu.complete_btn = DIALOG_COMPLETE_BTN_EN;
             dialog_menu.print_again = DIALOG_PRINT_AGAIN_BTN_EN;
-            dialog_menu.recovery_continue_btn = DIALONG_RECOVERY_COMTINUE_BTN_EN;
-            dialog_menu.recovery_back_btn = DIALONG_RECOVERY_BACK_BTN_EN;
+            dialog_menu.recovery_continue_btn = DIALONG_RECOVERY_COMTINUE_BTN_RU;
+            dialog_menu.recovery_back_btn = DIALONG_RECOVERY_BACK_BTN_RU;
             dialog_menu.add_filament = ADD_FILAMENT_EN;
 
 
-            advances_menu.title = ADVANCES_TITLE_EN;
-            advances_menu.floodlight = ADVANCES_FLOODLIGHT_EN;
+            advances_menu.title = ADVANCES_TITLE_RU;
+            advances_menu.floodlight = ADVANCES_FLOODLIGHT_RU;
             advances_menu.fan5051 = ADVANCES_5051FAN_EN;
-            advances_menu.flame_alarm = ADVANCES_FLAME_ALARM_EN;
+            advances_menu.flame_alarm = ADVANCES_FLAME_ALARM_RU;
       
-            voice_menu.title = VOICE_TITLE_EN;
-            voice_menu.btn_sound = VOICE_BTN_SOUND_EN;
-            voice_menu.endstop_sound = VOICE_ENDSTOP_SOUND_EN;
-            voice_menu.print_tone_sound = VOICE_PRINT_TONE_SOUND_EN;
-            voice_menu.no_filament_tone_sound = VOICE_NO_FILAMENT_SOUND_EN;
+            voice_menu.title = VOICE_TITLE_RU;
+            voice_menu.btn_sound = VOICE_BTN_SOUND_RU;
+            voice_menu.endstop_sound = VOICE_ENDSTOP_SOUND_RU;
+            voice_menu.print_tone_sound = VOICE_PRINT_TONE_SOUND_RU;
+            voice_menu.no_filament_tone_sound = VOICE_NO_FILAMENT_SOUND_RU;
               
 
-            tempsetting_menu.title = TEMPSETTING_TITLE_EN;
+            tempsetting_menu.title = TEMPSETTING_TITLE_RU;
             tempsetting_menu.pla = TEMPSETTING_PLA_EN;
             tempsetting_menu.abs = TEMPSETTING_ABS_EN;
-            tempsetting_menu.ex1 = TEMPSETTING_EX1_EN;
-            tempsetting_menu.bed = TEMPSETTING_BED_EN;
+            tempsetting_menu.ex1 = TEMPSETTING_EX1_RU;
+            tempsetting_menu.bed = TEMPSETTING_BED_RU;
 
-            advances_menu.fan5051 = ADVANCES_5051FAN_EN;
+            advances_menu.fan5051 = ADVANCES_5051FAN_RU;
 
             //
             move_menu.title    = TITLE_MOVE_RU;
             move_menu.zoffset = TEXT_ZOFFSET_RU;
-            move_menu.layout_stop         = TEXT_LAYER_STOP_EN;
+            move_menu.layout_stop         = TEXT_LAYER_STOP_RU;
             //
             home_menu.title    = TITLE_HOME_RU;
             home_menu.stopmove = HOME_STOPMOVE_RU;
@@ -2294,8 +2302,8 @@ void disp_language_init() {
             wifi_menu.title     = WIFI_TEXT;
             wifi_menu.cloud     = CLOUD_TEXT_RU;
             wifi_menu.reconnect = WIFI_RECONNECT_TEXT_RU;
-            wifi_menu.info_text = WIFI_INFO_TEXT_EN;
-            wifi_menu.link_overtime_text = WIFI_LINK_OVERTIME_EN;
+            wifi_menu.info_text = WIFI_INFO_TEXT_RU;
+            wifi_menu.link_overtime_text = WIFI_LINK_OVERTIME_RU;
 
             cloud_menu.title        = TITLE_CLOUD_TEXT_RU;
             cloud_menu.bind         = CLOUD_BINDED_RU;
@@ -2310,14 +2318,14 @@ void disp_language_init() {
             // about_menu.type    = ABOUT_TYPE_TEXT_EN;
             // about_menu.version = ABOUT_VERSION_TEXT_EN;
             // about_menu.wifi    = ABOUT_WIFI_TEXT_EN;
-             about_menu.title   = ABOUT_TITLE_EN;
-             about_menu.size    = ABOUT_SZIE_EN;
-             about_menu.model   = ABOUT_MODEL_EN;
-             about_menu.diameter=   ABOUT_DIAMETER_EN;
+             about_menu.title   = ABOUT_TITLE_RU;
+             about_menu.size    = ABOUT_SZIE_RU;
+             about_menu.model   = ABOUT_MODEL_RU;
+             about_menu.diameter=   ABOUT_DIAMETER_RU;
              about_menu.voltage =   ABOUT_VOLTAGE_EN;  
-             about_menu.version =   ABOUT_VERSIZON_EN; 
-             about_menu.support =   ABOUT_SUPPORT_EN; 
-             about_menu.sales   =   ABOUT_SALES_EN; 
+             about_menu.version =   ABOUT_VERSIZON_RU; 
+             about_menu.support =   ABOUT_SUPPORT_RU; 
+             about_menu.sales   =   ABOUT_SALES_RU; 
             
             //
             fan_menu.title = TITLE_FAN_RU;
@@ -2410,13 +2418,13 @@ void disp_language_init() {
             print_file_dialog_menu.autolevelingTips      = DIALOG_AUTO_LEVELING_TIPS_RU;
 #endif      
 
-            dialog_menu.emergency_text1 = DIALOG_EMERGENCY_TEXT1_EN;
+            dialog_menu.emergency_text1 = DIALOG_EMERGENCY_TEXT1_RU;
             dialog_menu.emergency_text2 = DIALOG_EMERGENCY_TEXT2_EN;
             dialog_menu.emergency_text3 = DIALOG_EMERGENCY_TEXT3_EN;
             dialog_menu.emergency_text4 = DIALOG_EMERGENCY_TEXT4_EN;
-            dialog_menu.no_filament_text1 = DIALOG_NO_FILAMENT_TEXT1_EN;
-            dialog_menu.no_filament_text2 = DIALOG_NO_FILAMENT_TEXT2_EN;
-            dialog_menu.no_filament_text3 = DIALOG_NO_FILAMENT_TEXT3_EN;
+            dialog_menu.no_filament_text1 = DIALOG_NO_FILAMENT_TEXT1_RU;
+            dialog_menu.no_filament_text2 = DIALOG_NO_FILAMENT_TEXT2_RU;
+            dialog_menu.no_filament_text3 = DIALOG_NO_FILAMENT_TEXT3_RU;
 
             pause_msg_menu.pausing       = MESSAGE_PAUSING_RU;
             pause_msg_menu.changing      = MESSAGE_CHANGING_RU;
@@ -2680,6 +2688,9 @@ void disp_language_init() {
             eeprom_menu.storeTips        = EEPROM_STORE_TIPS_SP;
             eeprom_menu.readTips         = EEPROM_READ_TIPS_SP;
             eeprom_menu.revertTips       = EEPROM_REVERT_TIPS_SP;
+
+            
+            machine_menu.key_confirm   = KEY_CONFIRM_RU;
             break;
 
         #endif // if 1

@@ -42,7 +42,7 @@ typedef struct {
   char file_name[FILE_NUM][SHORT_NAME_LEN * MAX_DIR_LEVEL + 1];
   char curDirPath[SHORT_NAME_LEN * MAX_DIR_LEVEL + 1];
   // char long_name[FILE_NUM][SHORT_NAME_LEN * 2 + 1];
-  char long_name[FILE_NUM][SHORT_NAME_LEN * 4 + 1];
+  char long_name[FILE_NUM][100];//[SHORT_NAME_LEN * 4 + 1];
   bool IsFolder[FILE_NUM];
   char Sd_file_cnt;
   char sd_file_index;

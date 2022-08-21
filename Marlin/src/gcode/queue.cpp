@@ -36,6 +36,9 @@ GCodeQueue queue;
 #include "../module/temperature.h"
 #include "../MarlinCore.h"
 #include "../core/bug_on.h"
+#include "../Marlin/src/lcd/extui/mks_ui/draw_ui.h"
+
+extern bool gcode_preview_over;
 
 #if ENABLED(PRINTER_EVENT_LEDS)
   #include "../feature/leds/printer_event_leds.h"
@@ -639,17 +642,46 @@ float read_layout_hight(char *str)
    * always receives complete command-lines, they can go directly
    * into the main command queue.
    */
+  extern bool die_for_get;
+  extern uint8_t language_set;
   inline void GCodeQueue::get_sdcard_commands() {
     static uint8_t sd_input_state = PS_NORMAL;
+    static bool die = false;
 
     // Get commands if there are more in the file
-    if (!IS_SD_FETCHING()) return;
+    if (!IS_SD_FETCHING()) 
+    {
+      // if(uiCfg.print_state == WORKING && !gcode_preview_over)
+      // {
+      //     clear_cur_ui();
+      //     lv_draw_dialog(DIALOG_TYPE_READ_FILE_ERR);
+      // }
+      return;
+    }
 
     int sd_count = 0;
     while (!ring_buffer.full() && !card.eof()) {
       const int16_t n = card.get();
       const bool card_eof = card.eof();
-      if (n < 0 && !card_eof) { SERIAL_ERROR_MSG(STR_SD_ERR_READ); continue; }
+      // if(1)
+      if (n < 0 && !card_eof) 
+      {
+        watchdog_refresh(); 
+        SERIAL_ERROR_MSG(STR_SD_ERR_READ);
+        if(!die)
+        {
+          die = true;
+          die_for_get = true;
+          card.abortFilePrintSoon();
+          gCfgItems.language = language_set;
+          // gCfgItems.language = LANG_ENGLISH;
+          update_spi_flash();
+          thermalManager.disable_all_heaters();
+          clear_cur_ui();
+          lv_draw_dialog(DIALOG_TYPE_READ_FILE_ERR);
+        } 
+        continue; 
+      }
 
       CommandLine &command = ring_buffer.commands[ring_buffer.index_w];
       const char sd_char = (char)n;

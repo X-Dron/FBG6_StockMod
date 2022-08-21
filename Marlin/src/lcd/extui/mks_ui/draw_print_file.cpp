@@ -492,13 +492,14 @@ void disp_gcode_icon(uint8_t file_num) {
   lv_refr_now(lv_refr_get_disp_refreshing());
   file_print_page.pageDown_imgbtn = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_next_page.bin", LV_ALIGN_IN_BOTTOM_MID, 0, -10, other_event_handler, ID_P_DOWN);
   file_print_page.back_imgbtn = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_back4.bin", LV_ALIGN_IN_BOTTOM_RIGHT, -10, -10, other_event_handler, ID_P_RETURN);
+  lv_refr_now(lv_refr_get_disp_refreshing());
  #else 
   buttonPageUp   = lv_imgbtn_create(mks_ui.src_main, "F:/bmp_pageUp.bin", OTHER_BTN_XPIEL * 3 + INTERVAL_V * 4, titleHeight, event_handler, ID_P_UP);
   buttonPageDown = lv_imgbtn_create(mks_ui.src_main, "F:/bmp_pageDown.bin", OTHER_BTN_XPIEL * 3 + INTERVAL_V * 4, titleHeight + OTHER_BTN_YPIEL + INTERVAL_H, event_handler, ID_P_DOWN);
   buttonBack     = lv_imgbtn_create(mks_ui.src_main, "F:/bmp_back.bin", OTHER_BTN_XPIEL * 3 + INTERVAL_V * 4, titleHeight + OTHER_BTN_YPIEL * 2 + INTERVAL_H * 2, event_handler, ID_P_RETURN);
 #endif
   if(file_num <= 0)
-    lv_label_align(mks_printer.user_src,file_print_page.text_label,mks_printer.user_src, "No files found!",LV_ALIGN_CENTER,15, 0,&User_style.en_text_black_style);
+    lv_label_align(mks_printer.user_src,file_print_page.text_label,mks_printer.user_src, file_menu.no_file,LV_ALIGN_CENTER,0, 0,&User_style.en_text_black_style);//x 15
   // Create labels on the image buttons
   else
   {

@@ -84,6 +84,7 @@ static lv_obj_t *buttonCN, *buttonT_CN, *buttonEN, *buttonRU;
 static lv_obj_t *labelCN, *labelT_CN, *labelEN, *labelRU;
 static lv_obj_t *buttonES, *buttonFR, *buttonIT;
 static lv_obj_t *imgset;
+extern uint8_t language_set;
 
 static void event_handler(lv_obj_t *obj, lv_event_t event) {
   if(event == LV_EVENT_PRESSED)
@@ -102,6 +103,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         gCfgItems.language = LANG_SIMPLE_CHINESE;
         disp_imgset_refre(gCfgItems.language);
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       case ID_EN:
@@ -113,6 +115,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         gCfgItems.language = LANG_ENGLISH;
         disp_imgset_refre(gCfgItems.language);
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       case ID_GE:
@@ -123,6 +126,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         // lv_obj_refresh_ext_draw_pad(buttonRU);
         gCfgItems.language = LANG_GERMAN;
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       case ID_PE:
@@ -133,6 +137,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         // lv_obj_refresh_ext_draw_pad(buttonES);
         gCfgItems.language = LANG_PORTUGUESE;
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       case ID_PO:
@@ -143,6 +148,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         // lv_obj_refresh_ext_draw_pad(buttonES);
         // gCfgItems.language = LANG_POLISH;
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       case ID_FR:
@@ -153,6 +159,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         // lv_obj_refresh_ext_draw_pad(buttonFR);
         gCfgItems.language = LANG_FRENCH;
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       case ID_SP:
@@ -163,6 +170,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         // lv_obj_refresh_ext_draw_pad(buttonES);
         gCfgItems.language = LANG_SPANISH;
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       case ID_KO:
@@ -173,12 +181,14 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         // lv_obj_refresh_ext_draw_pad(buttonES);
         gCfgItems.language = LANG_KOREAN;
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       case ID_RU:
         gCfgItems.language = LANG_RUSSIAN;
         disp_imgset_refre(gCfgItems.language);
         update_spi_flash();
+        language_set = gCfgItems.language;
         disp_language_init();
         break;
       

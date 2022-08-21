@@ -325,7 +325,12 @@ void lv_draw_printing() {
 
   printing_page.stop_imgbtn = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_stop.bin", LV_ALIGN_IN_TOP_LEFT, 21, 399, event_handler, ID_STOP);
   
-  printing_page.stop_imgbtn = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_more.bin", LV_ALIGN_IN_TOP_LEFT, 229, 395, event_handler, ID_MORE);
+  printing_page.option_imgbtn = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_more.bin", LV_ALIGN_IN_TOP_LEFT, 229, 395, event_handler, ID_MORE);
+
+  lv_obj_t *labelmore = lv_label_create_empty(printing_page.option_imgbtn);
+  lv_label_set_text(labelmore,main_menu.more);
+  lv_label_set_style(labelmore,LV_LABEL_STYLE_MAIN,&User_style.small_text_white_style);
+  lv_obj_align(labelmore, nullptr, LV_ALIGN_CENTER, 0, 20);
 
     if(gCfgItems.language == LANG_SIMPLE_CHINESE)
     lv_refr_now(lv_refr_get_disp_refreshing());

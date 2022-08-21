@@ -81,29 +81,31 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
 
 
 void lv_draw_about() {
-  static lv_style_t about_grey_style;
+  static lv_style_t about_grey_style, about_black_style;
   lv_style_copy(&about_grey_style, &User_style.text_grey_style);
   about_grey_style.text.font         = &DengXian_16;
+  lv_style_copy(&about_black_style, &User_style.text_black_style);
+  about_black_style.text.font         = &DengXian_16;
   lv_screen_distribution(ABOUT_UI);
   
 
   mks_printer.user_src1 = lv_title_offset_n_create(mks_printer.user_src,get_title_text(ABOUT_UI),TITLE_LABEL_X);
   mks_printer.user_src2 = lv_scr_create(mks_printer.user_src,0,50,320,TFT_HEIGHT-50);
   about_page.back_imgbtn = lv_imgbtn_align_create(mks_printer.user_src1, "F:/png_back.bin", LV_ALIGN_IN_LEFT_MID, 0, 0, event_handler, ID_A_RETURN);
-  about_page.model_label = lv_label_align_create(mks_printer.user_src2,about_menu.model, 10, 10,LV_ALIGN_IN_TOP_LEFT,  &User_style.text_black_style);
-  about_page.size_label = lv_label_align_create(mks_printer.user_src2,about_menu.size, 10, 75,LV_ALIGN_IN_TOP_LEFT,  &User_style.text_black_style);
-  about_page.diameter_label = lv_label_align_create(mks_printer.user_src2,about_menu.diameter, 10, 140,LV_ALIGN_IN_TOP_LEFT,  &User_style.text_black_style);
-  // about_page.voltage_label = lv_label_align_create(mks_printer.user_src2,about_menu.voltage, 10, 205,LV_ALIGN_IN_TOP_LEFT,  &User_style.text_black_style);
-  about_page.version_label = lv_label_align_create(mks_printer.user_src2,about_menu.version, 10, 205,LV_ALIGN_IN_TOP_LEFT,  &User_style.text_black_style);//270
-  about_page.support_label = lv_label_align_create(mks_printer.user_src2,about_menu.support, 10, 270,LV_ALIGN_IN_TOP_LEFT,  &User_style.text_black_style);//336
-  about_page.sales_label  = lv_label_align_create(mks_printer.user_src2,about_menu.sales, 10, 336,LV_ALIGN_IN_TOP_LEFT,  &User_style.text_black_style);
+  about_page.model_label = lv_label_align_create(mks_printer.user_src2,about_menu.model, 10, 10,LV_ALIGN_IN_TOP_LEFT,  &about_black_style);
+  about_page.size_label = lv_label_align_create(mks_printer.user_src2,about_menu.size, 10, 75,LV_ALIGN_IN_TOP_LEFT,  &about_black_style);
+  about_page.diameter_label = lv_label_align_create(mks_printer.user_src2,about_menu.diameter, 10, 140,LV_ALIGN_IN_TOP_LEFT,  &about_black_style);
+  // about_page.voltage_label = lv_label_align_create(mks_printer.user_src2,about_menu.voltage, 10, 205,LV_ALIGN_IN_TOP_LEFT,  &about_black_style);
+  about_page.version_label = lv_label_align_create(mks_printer.user_src2,about_menu.version, 10, 205,LV_ALIGN_IN_TOP_LEFT,  &about_black_style);//270
+  about_page.support_label = lv_label_align_create(mks_printer.user_src2,about_menu.support, 10, 270,LV_ALIGN_IN_TOP_LEFT,  &about_black_style);//336
+  about_page.sales_label  = lv_label_align_create(mks_printer.user_src2,about_menu.sales, 10, 336,LV_ALIGN_IN_TOP_LEFT,  &about_black_style);
 
 
   about_page.model_label_value = lv_label_align(mks_printer.user_src2,about_page.model_label_value,about_page.model_label, "Flying Bear Ghost 6",LV_ALIGN_OUT_LEFT_BOTTOM,0, 5,&about_grey_style);
   about_page.size_label_value = lv_label_align(mks_printer.user_src2,about_page.size_label_value,about_page.size_label, "255mm*210mm*210mm",LV_ALIGN_OUT_LEFT_BOTTOM,0, 5,&about_grey_style);
   about_page.diameter_label_value = lv_label_align(mks_printer.user_src2,about_page.diameter_label_value,about_page.diameter_label, "1.75mm",LV_ALIGN_OUT_LEFT_BOTTOM,0, 5,&about_grey_style);
   // about_page.voltage_label_value = lv_label_align(mks_printer.user_src2,about_page.voltage_label_value,about_page.voltage_label, "AC220V/AC110V",LV_ALIGN_OUT_LEFT_BOTTOM,0, 5,&User_style.text_grey_style);
-  about_page.version_label_value = lv_label_align(mks_printer.user_src2,about_page.version_label_value,about_page.version_label, "GHOST6-V1.0_09X06_014",LV_ALIGN_OUT_LEFT_BOTTOM,0, 5,&about_grey_style);
+  about_page.version_label_value = lv_label_align(mks_printer.user_src2,about_page.version_label_value,about_page.version_label, "GHOST6-V1.0_09X06_017",LV_ALIGN_OUT_LEFT_BOTTOM,0, 5,&about_grey_style);
   about_page.support_label_value = lv_label_align(mks_printer.user_src2,about_page.support_label_value,about_page.support_label, "support@3dflyingbear.com",LV_ALIGN_OUT_LEFT_BOTTOM,0, 5,&about_grey_style);
   // about_page.support1_label_value = lv_label_align(mks_printer.user_src2,about_page.support_label_value,about_page.support_label, "adam@3dflyingbear.com",LV_ALIGN_OUT_LEFT_BOTTOM,0, 30,&User_style.text_grey_style);
   about_page.support1_label_value = lv_label_align(mks_printer.user_src2,about_page.support1_label_value,about_page.sales_label, "adam@3dflyingbear.com",LV_ALIGN_OUT_LEFT_BOTTOM,0, 5,&about_grey_style);

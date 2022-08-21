@@ -235,14 +235,14 @@ void lv_draw_tool() {
   // }
   // else
   // {
-   lv_label_align_create(tool_page.level_imgbtn ,tool_menu.leveling, -3, -15,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
-   lv_label_align_create(tool_page.tempsetting_imgbtn ,tool_menu.tempsetting, -5, -15,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
-   lv_label_align_create(tool_page.wifi_imgbtn ,tool_menu.wifi, -1, -13,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
+   lv_label_align_create(tool_page.level_imgbtn ,tool_menu.leveling, -3, -5,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
+   lv_label_align_create(tool_page.tempsetting_imgbtn ,tool_menu.tempsetting, -5, -5,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
+   lv_label_align_create(tool_page.wifi_imgbtn ,tool_menu.wifi, -1, -5,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
    lv_label_align_create(tool_page.advances_imgbtn ,tool_menu.advances, -4, -5,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
    
-   lv_label_align_create(tool_page.endstop_imgbtn ,tool_menu.endstop, -2, -15,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
-   lv_label_align_create(tool_page.voice_imgbtn ,tool_menu.voice, -5, -15,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
-   lv_label_align_create(tool_page.language_imgbtn ,tool_menu.language, -3, -15,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
+   lv_label_align_create(tool_page.endstop_imgbtn ,tool_menu.endstop, -2, -5,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
+   lv_label_align_create(tool_page.voice_imgbtn ,tool_menu.voice, -5, -5,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
+   lv_label_align_create(tool_page.language_imgbtn ,tool_menu.language, -3, -5,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
    lv_label_align_create(tool_page.about_imgbtn ,tool_menu.about, -5, -5,LV_ALIGN_IN_BOTTOM_MID,  &User_style.text16_white_style);
 
   //  char buff[20];

@@ -338,7 +338,7 @@ void startOrResumeJob() {
 }
 
 #if ENABLED(SDSUPPORT)
-
+  bool die_for_get = false;
   inline void abortSDPrinting() {
     IF_DISABLED(NO_SD_AUTOSTART, card.autofile_cancel());
     card.abortFilePrintNow(TERN_(SD_RESORT, true));
@@ -354,7 +354,8 @@ void startOrResumeJob() {
 
     wait_for_heatup = false;
 
-    TERN_(POWER_LOSS_RECOVERY, recovery.purge());
+    if(!die_for_get)
+      TERN_(POWER_LOSS_RECOVERY, recovery.purge());
 
     #ifdef EVENT_GCODE_SD_ABORT
       queue.inject_P(PSTR(EVENT_GCODE_SD_ABORT));
@@ -1621,7 +1622,16 @@ void loop() {
     idle();
 
     #if ENABLED(SDSUPPORT)
-      if (card.flag.abort_sd_printing) abortSDPrinting();
+      if (card.flag.abort_sd_printing)
+      {
+        if(die_for_get) 
+        {
+          die_for_get = false;
+          // clear_cur_ui();
+          // lv_draw_dialog(DIALOG_TYPE_READ_FILE_ERR);
+        }
+        abortSDPrinting();
+      }
       if (marlin_state == MF_SD_COMPLETE) finishSDPrinting();
     #endif
 

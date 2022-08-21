@@ -298,7 +298,7 @@
 #define DEC_TEXT_EN             "Dec"
 #define EXTRUDER_1_TEXT_EN      "Extrusion"
 #define EXTRUDER_2_TEXT_EN      "Extrusion2"
-#define HEATBED_TEXT_EN         "HeatBed"
+#define HEATBED_TEXT_EN         "HotBed"
 #define TEXT_1C_EN              "1℃"
 #define TEXT_5C_EN              "5℃"
 #define TEXT_10C_EN             "10℃"
@@ -359,7 +359,7 @@
 #define DIALOG_TEXT_EN  "Found a file has mot been\n              printed yet!"
 #define PRINTING_Z_OFFSET_EN  "Z Offset"
 
-#define AXIS_X_ADD_TEXT_EN      "X+"
+#define AXIS_X_ADD_TEXT_RU      "X+"
 #define AXIS_X_DEC_TEXT_EN      "X-"
 #define AXIS_Y_ADD_TEXT_EN      "Y+"
 #define AXIS_Y_DEC_TEXT_EN      "Y-"
@@ -418,7 +418,7 @@
 #define WIFI_EXCEPTION_TEXT_EN        "Exception"
 #define WIFI_RECONNECT_TEXT_EN        "Reconnect"
 #define WIFI_INFO_TEXT_EN             "The printer is connected to a\n router and you can control\n the printer from your\n computer"
-#define WIFI_LINK_OVERTIME_EN         "WiFi link timeout!"
+#define WIFI_LINK_OVERTIME_EN         "WiFi link timeout!!"
 #define CLOUD_TEXT_EN                 "Cloud"
 #define CLOUD_BIND_EN                 "Bind"
 #define CLOUD_UNBIND_EN               "Unbind"
@@ -560,7 +560,7 @@
 #define DIALOG_NO_FILAMENT_TEXT2_EN  "please reinstall the consumables"
 #define DIALOG_NO_FILAMENT_TEXT3_EN  "Then start printing!"
 
-#define HOTBED_ENABLE_EN        "Enable heatbed"
+#define HOTBED_ENABLE_EN        "Enable hotbed"
 #define MOTOR_EN_HIGH_LEVEL_EN  "High"
 #define MOTOR_EN_LOW_LEVEL_EN   "Low"
 

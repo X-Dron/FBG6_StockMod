@@ -265,7 +265,7 @@
 #define TOOL_TEXT_CN                "工具"
 #define PREHEAT_TEXT_CN             "预热"
 #define MOVE_TEXT_CN                "移动"
-#define TEXT_ZOFFSET_CN             "Z轴偏移"
+#define TEXT_ZOFFSET_CN             "Z轴补偿"
 #define TEXT_LAYER_STOP_CN           "层停止"
 
 #define HOME_TEXT_CN                "回零"
@@ -543,7 +543,7 @@
 #define EXTRUDE_TEXT_VALUE_T_CN     ": %d°C"
 #define WIFI_RECONNECT_TEXT_CN      "重新连接"
 #define WIFI_INFO_TEXT_CH "打印机已连接到路由器,\n您可以从计算机\n控制打印机"
-#define WIFI_LINK_OVERTIME_CH "WIFI连接超时!."
+#define WIFI_LINK_OVERTIME_CH "WIFI连接超时!!"
 
 #define PRINTING_GBK                "正在打印"
 #define PRINTING_OPERATION_GBK      "操作"
