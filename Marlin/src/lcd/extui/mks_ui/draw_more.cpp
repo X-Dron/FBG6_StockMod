@@ -150,8 +150,8 @@ void lv_draw_more() {
   // mks_printer.user_src = lv_scr_create(mks_printer.user_src,0,TITLE_H,TITLE_W,TFT_HEIGHT-TITLE_H);
   lv_refr_now(lv_refr_get_disp_refreshing());
 
-  more_page.layer_imgbtn = lv_imgbtn_create(mks_printer.user_src, "F:/png_layer.bin",63, 85, event_handler, ID_M_LAYER);
-  more_page.filament_imgbtn = lv_imgbtn_create(mks_printer.user_src, "F:/png_ex_factor.bin",214, 85, event_handler, ID_M_FILAMENT);
+  more_page.layer_imgbtn = lv_imgbtn_create(mks_printer.user_src, "F:/png_layer.bin",63, 96, event_handler, ID_M_LAYER);
+  more_page.filament_imgbtn = lv_imgbtn_create(mks_printer.user_src, "F:/png_ex_factor.bin",214, 96, event_handler, ID_M_FILAMENT);
   more_page.z_offset_imgbtn = lv_imgbtn_create(mks_printer.user_src, "F:/png_z_offset.bin",38, 217, event_handler, ID_M_ZOFFSET);
   more_page.fan_imgbtn = lv_imgbtn_create(mks_printer.user_src, "F:/png_fan_5010.bin",205, 217, event_handler, ID_M_FAN);
 
@@ -163,13 +163,13 @@ void lv_draw_more() {
 
   more_page.filament_label = lv_label_create_empty(mks_printer.user_src);
   lv_label_set_text(more_page.filament_label, "100%");
-  lv_obj_align(more_page.filament_label, more_page.filament_imgbtn, LV_ALIGN_CENTER, 0, 50);
+  lv_obj_align(more_page.filament_label, more_page.filament_imgbtn, LV_ALIGN_CENTER, 0, 47);
   lv_obj_set_style(more_page.filament_label,&User_style.text22_black_style);
 
 
   more_page.layer_label = lv_label_create_empty(mks_printer.user_src);
   lv_label_set_text(more_page.layer_label, move_menu.layout_stop);
-  if(gCfgItems.language == LANG_SIMPLE_CHINESE || gCfgItems.language == LANG_RUSSIAN)
+  if(gCfgItems.language == LANG_SIMPLE_CHINESE)
   lv_obj_align(more_page.layer_label, more_page.layer_imgbtn, LV_ALIGN_OUT_BOTTOM_MID, -40, 3);
   else
   lv_obj_align(more_page.layer_label, more_page.layer_imgbtn, LV_ALIGN_CENTER, 0, 52);
@@ -265,7 +265,7 @@ void disp_filament_speed()
 {
   sprintf_P(public_buf_l, PSTR("%d%%"), planner.flow_percentage[uiCfg.extruderIndex]);
   lv_label_set_text(more_page.filament_label, public_buf_l);
-  lv_obj_align(more_page.filament_label, more_page.filament_imgbtn, LV_ALIGN_CENTER, 0, 50);
+  lv_obj_align(more_page.filament_label, more_page.filament_imgbtn, LV_ALIGN_OUT_BOTTOM_MID, 0, 5);
 
 }
 

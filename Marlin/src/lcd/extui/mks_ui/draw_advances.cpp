@@ -136,10 +136,6 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
 
 
 void lv_draw_advances() {
-  static lv_style_t advances_black_style;
-  lv_style_copy(&advances_black_style, &User_style.text_black_style);
-  advances_black_style.text.font         = &DengXian_16;
-
   lv_screen_distribution(ADVANCES_UI);
   // thermalManager.set_fan_speed(1,255);
   digitalWrite(PE7, LOW);
@@ -147,9 +143,9 @@ void lv_draw_advances() {
   // mks_printer.user_src = lv_scr_create(mks_printer.user_src,0,TITLE_H,TITLE_W,TFT_HEIGHT-TITLE_H);
   lv_refr_now(lv_refr_get_disp_refreshing());
 
-  advances_page.floodlight_label = lv_label_align_create(mks_printer.user_src,advances_menu.floodlight,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*0,LV_ALIGN_IN_TOP_LEFT,&advances_black_style);
-  advances_page.fan5051_label = lv_label_align_create(mks_printer.user_src,advances_menu.fan5051,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*1,LV_ALIGN_IN_TOP_LEFT,&advances_black_style);
-  advances_page.flame_alarm_label = lv_label_align_create(mks_printer.user_src,advances_menu.flame_alarm,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*2,LV_ALIGN_IN_TOP_LEFT,&advances_black_style);
+  advances_page.floodlight_label = lv_label_align_create(mks_printer.user_src,advances_menu.floodlight,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*0,LV_ALIGN_IN_TOP_LEFT,&User_style.text_black_style);
+  advances_page.fan5051_label = lv_label_align_create(mks_printer.user_src,advances_menu.fan5051,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*1,LV_ALIGN_IN_TOP_LEFT,&User_style.text_black_style);
+  advances_page.flame_alarm_label = lv_label_align_create(mks_printer.user_src,advances_menu.flame_alarm,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*2,LV_ALIGN_IN_TOP_LEFT,&User_style.text_black_style);
   // advances_page.no_filament_label = lv_label_align_create(mks_printer.user_src,advances_menu.no_filament_tone_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*3,LV_ALIGN_IN_TOP_LEFT,&User_style.text_black_style);
 
   if(gCfgItems.advances_light)

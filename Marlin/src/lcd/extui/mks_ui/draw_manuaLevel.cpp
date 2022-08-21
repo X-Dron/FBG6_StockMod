@@ -28,12 +28,15 @@
 #include <lv_conf.h>
 
 #include "../../../gcode/queue.h"
+#include "../../../gcode/gcode.h"
 #include "../../../inc/MarlinConfig.h"
 
 extern const char G28_STR[];
 
 extern lv_group_t *g;
 static lv_obj_t *scr;
+extern float z_offset_add;
+extern bool baby_step_set_data;
 
 typedef struct{
   
@@ -62,6 +65,8 @@ enum {
 };
 
 static void event_handler(lv_obj_t *obj, lv_event_t event) {
+  char buf[20];
+  char str_1[16];
   if(event == LV_EVENT_PRESSED)
     {
       button_sound_start();
@@ -73,12 +78,23 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         if (!queue.ring_buffer.full(1)) {
           if (uiCfg.leveling_first_time) {
             uiCfg.leveling_first_time = false;
+            baby_step_set_data = true;
             queue.inject_P(G28_STR);
+            // sprintf_P(buf,PSTR("M290 Z%s"),dtostrf(z_offset_add, 1, 3, str_1));
+            // gcode.process_subcommands_now_P(PSTR(buf));
+            // const int ind = obj->mks_obj_id - ID_M_POINT1;
+            // sprintf_P(public_buf_l, PSTR("G1Z10F500\nG1X%dY%dF1500\nG1Z%fF500"), gCfgItems.trammingPos[ind].x, gCfgItems.trammingPos[ind].y,z_offset_add);
+            // queue.inject(public_buf_l);
           }
-          const int ind = obj->mks_obj_id - ID_M_POINT1;
-          sprintf_P(public_buf_l, PSTR("G1Z10F500\nG1X%dY%dF1500\nG1Z0F500"), gCfgItems.trammingPos[ind].x, gCfgItems.trammingPos[ind].y);
-          queue.inject(public_buf_l);
-          send_m290();
+            // if(baby_step_set_data)
+            // {
+            //   sprintf_P(buf,PSTR("M290 Z%s"),dtostrf(z_offset_add, 1, 3, str_1));
+            //   queue.inject(PSTR(buf));
+            //   baby_step_set_data = false;
+            // }
+            const int ind = obj->mks_obj_id - ID_M_POINT1;
+            sprintf_P(public_buf_l, PSTR("G1Z10F500\nG1X%dY%dF1500\nG1Z0F500"), gCfgItems.trammingPos[ind].x, gCfgItems.trammingPos[ind].y);
+            queue.inject(public_buf_l);
         }
         break;
       case ID_M_ZHOME:
@@ -115,11 +131,6 @@ void lv_draw_manualLevel() {
   lv_refr_now(lv_refr_get_disp_refreshing());
   leveling_page.z_imgbtn = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_level_z.bin", LV_ALIGN_IN_BOTTOM_LEFT, 10, -10, event_handler, ID_M_ZHOME);
   leveling_page.zoffset_imgbtn = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_level_zoffset.bin", LV_ALIGN_IN_BOTTOM_RIGHT, -10, -10, event_handler, ID_M_ZOFFSET);
-
-  lv_obj_t *label_zoffset = lv_label_create_empty(leveling_page.zoffset_imgbtn);
-  lv_label_set_text(label_zoffset,move_menu.zoffset);
-  lv_label_set_style(label_zoffset,LV_LABEL_STYLE_MAIN,&User_style.my_text_white_style);
-  lv_obj_align(label_zoffset, nullptr, LV_ALIGN_CENTER, 0, 25);
 
 
   lv_imgbtn_set_src_both(leveling_page.four_imgbtn,  "F:/png_level_four.bin");

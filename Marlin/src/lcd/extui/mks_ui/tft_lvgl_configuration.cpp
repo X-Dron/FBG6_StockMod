@@ -136,13 +136,12 @@ void SysTick_Callback() {
 }
 
 // #define USE_DMA_FSMC_TC_INT
-uint8_t language_set;
+
 void tft_lvgl_init() {
 
   W25QXX.init(SPI_HALF_SPEED);
 
   gCfgItems_init();
-  language_set = gCfgItems.language;
   
   ui_cfg_init();
 

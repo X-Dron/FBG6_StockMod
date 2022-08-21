@@ -39,7 +39,6 @@
 #include "../../../inc/MarlinConfig.h"
 #include "../../../../src/module/stepper.h"
 #include "../../../../src/module/endstops.h"
-#include "../Marlin/src/module/printcounter.h"
 
 #if ENABLED(EEPROM_SETTINGS)
   #include "../../../module/settings.h"
@@ -408,30 +407,6 @@ static void btn_cancel_event_cb(lv_obj_t *btn, lv_event_t event) {
     // lv_draw_ready_print();
   }
   else if (DIALOG_IS(TYPE_FINISH_PRINT)) {
-    
-        // IF_DISABLED(NO_SD_AUTOSTART, card.autofile_cancel());
-        // card.abortFilePrintNow(TERN_(SD_RESORT, true));
-
-        // queue.clear();
-        // quickstop_stepper();
-
-        // print_job_timer.abort();
-
-        // IF_DISABLED(SD_ABORT_NO_COOLDOWN, thermalManager.disable_all_heaters());
-
-        // TERN(HAS_CUTTER, cutter.kill(), thermalManager.zero_fan_speeds()); // Full cutter shutdown including ISR control
-
-        // wait_for_heatup = false;
-
-        // TERN_(POWER_LOSS_RECOVERY, recovery.purge());
-
-        // #ifdef EVENT_GCODE_SD_ABORT
-        //   queue.inject_P(PSTR(EVENT_GCODE_SD_ABORT));
-        // #endif
-
-        // TERN_(PASSWORD_AFTER_SD_PRINT_ABORT, password.lock_machine());
-        card.abortFilePrintSoon();
-
         #if HAS_GCODE_PREVIEW
         // char buff[20];
         // sprintf(buff,"n %s",list_file.long_name[sel_id]);
@@ -615,13 +590,13 @@ void lv_draw_dialog(uint8_t type) {
   // }
   if(DIALOG_IS(NO_FILAMENT_TIPS))
   {
-    dialog_img = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_err_tips.bin", LV_ALIGN_IN_TOP_LEFT, 126, 60, nullptr, 0);
+    dialog_img = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_err_tips.bin", LV_ALIGN_IN_TOP_LEFT, 126, 69, nullptr, 0);
     lv_refr_now(lv_refr_get_disp_refreshing());
     lv_imgbtn_set_src_both(dialog_img,"F:/png_err_tips.bin");
 
   }
   else if(DIALOG_IS(TYPE_RECOVERY_TIPS)){
-    dialog_img = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_pro_tips.bin", LV_ALIGN_IN_TOP_LEFT, 126, 50, nullptr, 0);
+    dialog_img = lv_imgbtn_align_create(mks_printer.user_src, "F:/png_pro_tips.bin", LV_ALIGN_IN_TOP_LEFT, 126, 69, nullptr, 0);
     // lv_refr_now(lv_refr_get_disp_refreshing());
     // lv_imgbtn_set_src_both(dialog_img,"F:/png_pro_tips.bin");
   }else
@@ -700,10 +675,6 @@ void lv_draw_dialog(uint8_t type) {
     lv_bar_set_anim_time(filament_bar, 1000);
     lv_bar_set_value(filament_bar, 0, LV_ANIM_ON);
   }
-  else if(DIALOG_IS(TYPE_READ_FILE_ERR))
-  {
-    
-  }
   else {
       lv_obj_t *labelOk;
       lv_obj_t *labelCancel;
@@ -775,10 +746,6 @@ void lv_draw_dialog(uint8_t type) {
       lv_label_set_text(labelOk, dialog_menu.complete_btn);       // Set the labels text
       lv_label_set_text(labelCancel, dialog_menu.print_again);
     }
-    else if(DIALOG_IS(TYPE_READ_FILE_ERR))
-    {
-
-    }
     else {
       lv_label_set_text(labelOk, print_file_dialog_menu.confirm); // Set the labels text
       lv_label_set_text(labelCancel, print_file_dialog_menu.cancel);
@@ -849,8 +816,8 @@ void lv_draw_dialog(uint8_t type) {
   else if(DIALOG_IS(TYPE_RECOVERY_TIPS))
   {
     char buff[20];
-    lv_label_set_text(labelDialog, dialog_menu.recovery_text);
-    // lv_label_set_text(labelDialog, "Found a file has mot been\n              printed yet!");
+    // lv_label_set_text(labelDialog, dialog_menu.recovery_text);
+    lv_label_set_text(labelDialog, "Found a file has mot been\n              printed yet!");
 
     lv_obj_t *labelDialog1 = lv_label_create(mks_printer.user_src, "");
 
@@ -871,15 +838,15 @@ void lv_draw_dialog(uint8_t type) {
     {
       lv_label_set_style(labelDialog,LV_LABEL_STYLE_MAIN,&User_style.text_black_style);
       lv_label_set_style(labelDialog1,LV_LABEL_STYLE_MAIN,&User_style.text_black_style);
-      lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 10, -65);
+      lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 10, -55);
       lv_obj_align(labelDialog1, nullptr, LV_ALIGN_CENTER, 0, 10);
     }
     else
     {
       lv_label_set_style(labelDialog,LV_LABEL_STYLE_MAIN,&User_style.text_black_style);
       lv_label_set_style(labelDialog1,LV_LABEL_STYLE_MAIN,&User_style.text_black_style);
-      lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 0, -75);
-      lv_obj_align(labelDialog1, labelDialog, LV_ALIGN_CENTER, 0, 80);
+      lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 0, -65);
+      lv_obj_align(labelDialog1, labelDialog, LV_ALIGN_CENTER, 0, 65);
     }
   }
   else if(DIALOG_IS(EMERGENCY_TIPS))
@@ -923,23 +890,15 @@ void lv_draw_dialog(uint8_t type) {
 
     if(gCfgItems.language == LANG_SIMPLE_CHINESE)
     {
-      lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 0, -100);
-      lv_obj_align(labelDialog1, nullptr, LV_ALIGN_CENTER, 0, -70);
-      lv_obj_align(labelDialog2, nullptr, LV_ALIGN_CENTER, 0, -40);
+      lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 0, -70);
+      lv_obj_align(labelDialog1, nullptr, LV_ALIGN_CENTER, 0, -40);
+      lv_obj_align(labelDialog2, nullptr, LV_ALIGN_CENTER, 0, -10);
     }
     else
     {
-      lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 0, -100);
-      lv_obj_align(labelDialog1, nullptr, LV_ALIGN_CENTER, 0, -70);
-      lv_obj_align(labelDialog2, nullptr, LV_ALIGN_CENTER, 0, -40);
-    }
-
-    if(gCfgItems.language == LANG_RUSSIAN)
-    {
-      lv_obj_t *labelDialog3 = lv_label_create(mks_printer.user_src, "");
-      lv_label_set_style(labelDialog3,LV_LABEL_STYLE_MAIN,&User_style.en_text_black_style);
-      lv_label_set_text(labelDialog3, DIALOG_NO_FILAMENT_TEXT4_RU);
-      lv_obj_align(labelDialog3, nullptr, LV_ALIGN_CENTER, 0, -10);
+      lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 0, -70);
+      lv_obj_align(labelDialog1, nullptr, LV_ALIGN_CENTER, 0, -40);
+      lv_obj_align(labelDialog2, nullptr, LV_ALIGN_CENTER, 0, -10);
     }
 
   }
@@ -1085,22 +1044,6 @@ void lv_draw_dialog(uint8_t type) {
   else if (DIALOG_IS(TYPE_FILAMENT_UNLOADING)) {
     lv_label_set_text(labelDialog, filament_menu.filament_dialog_unloading);
     lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 0, -70);
-  }
-  else if(DIALOG_IS(TYPE_READ_FILE_ERR))
-  {
-    lv_label_set_text(labelDialog, "Read file err");
-    lv_obj_align(labelDialog, nullptr, LV_ALIGN_CENTER, 0, -70);
-    
-    lv_obj_t *labelDialog1 = lv_label_create(mks_printer.user_src, "");
-    lv_label_set_text(labelDialog1, "Please check the SD card");
-    lv_label_set_style(labelDialog1,LV_LABEL_STYLE_MAIN,&User_style.en_text_black_style);
-    lv_obj_align(labelDialog1, nullptr, LV_ALIGN_CENTER, 0, -40);
-    
-    lv_obj_t *labelDialog2 = lv_label_create(mks_printer.user_src, "");
-    lv_label_set_text(labelDialog2, "and reboot the device");
-    lv_label_set_style(labelDialog2,LV_LABEL_STYLE_MAIN,&User_style.en_text_black_style);
-    lv_obj_align(labelDialog2, nullptr, LV_ALIGN_CENTER, 0, -10);
-    lv_refr_now(lv_refr_get_disp_refreshing());
   }
   #if ENABLED(MKS_WIFI_MODULE)
     else if (DIALOG_IS(TYPE_UNBIND)) {

@@ -105,6 +105,8 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
 
 void lv_draw_tempsetting() {
 
+
+
   // lv_screen_distribution(TEMPSETTING_UI);
   // mks_printer.user_src1 = lv_title_create(mks_printer.user_src,get_title_text(TEMPSETTING_UI));
   lv_screen_distribution(TEMPSETTING_UI); 

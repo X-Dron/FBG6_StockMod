@@ -275,14 +275,14 @@ void ttt()
     // about_menu.type    = ABOUT_TYPE_TEXT_RU;
     // about_menu.version = ABOUT_VERSION_TEXT_RU;
     // about_menu.wifi    = ABOUT_WIFI_TEXT_RU;
-      about_menu.title   = ABOUT_TITLE_RU;
-      about_menu.size    = ABOUT_SZIE_RU;
-      about_menu.model   = ABOUT_MODEL_RU;
-      about_menu.diameter=   ABOUT_DIAMETER_RU;
+      about_menu.title   = ABOUT_TITLE_EN;
+      about_menu.size    = ABOUT_SZIE_EN;
+      about_menu.model   = ABOUT_MODEL_EN;
+      about_menu.diameter=   ABOUT_DIAMETER_EN;
       about_menu.voltage =   ABOUT_VOLTAGE_EN;  
-      about_menu.version =   ABOUT_VERSIZON_RU; 
-      about_menu.support =   ABOUT_SUPPORT_RU; 
-      about_menu.sales   =   ABOUT_SALES_RU; 
+      about_menu.version =   ABOUT_VERSIZON_EN; 
+      about_menu.support =   ABOUT_SUPPORT_EN; 
+      about_menu.sales   =   ABOUT_SALES_EN; 
     
     //
     fan_menu.title = TITLE_FAN_RU;

@@ -542,7 +542,6 @@ void tft_style_init() {
   lv_style_copy(&User_style.text16_white_style, &lv_style_scr);
   User_style.text16_white_style.text.color = LV_COLOR_WHITE;
   User_style.text16_white_style.text.font         = &DengXian_16;//&lv_font_roboto_16;
-  User_style.text16_white_style.text.line_space   = -5;
 
   lv_style_copy(&User_style.small_text_white_style, &lv_style_scr);
   User_style.small_text_white_style.text.color = LV_COLOR_WHITE;
@@ -1762,24 +1761,7 @@ lv_obj_t *lv_title_offset_n_create(lv_obj_t *par, const char *text,lv_coord_t nu
     lv_label_set_long_mode(label, LV_LABEL_LONG_BREAK|LV_LABEL_LONG_SROLL);
     lv_obj_set_size(label,180,30);
     lv_obj_align(label, obj, LV_ALIGN_IN_LEFT_MID, num, 0);
-    if(gCfgItems.language == LANG_RUSSIAN)
-    { 
-      switch (disp_state)
-      {
-        case VOICE_UI:
-        case TEMPSETTING_UI:
-          lv_label_set_style(label,LV_LABEL_STYLE_MAIN,&User_style.small_text_white_style);
-          break;
-        default:
-          lv_label_set_style(label,LV_LABEL_STYLE_MAIN,&User_style.text_title_white_style);
-          break;
-      }
-    }
-    else
-    {
-      lv_label_set_style(label,LV_LABEL_STYLE_MAIN,&User_style.text_title_white_style);
-    }
-
+    lv_label_set_style(label,LV_LABEL_STYLE_MAIN,&User_style.text_title_white_style);
   }
   return obj;
 }

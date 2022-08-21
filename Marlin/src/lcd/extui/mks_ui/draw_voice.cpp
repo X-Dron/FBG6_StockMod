@@ -297,10 +297,10 @@ void lv_draw_voice() {
   // mks_printer.user_src = lv_scr_create(mks_printer.user_src,0,TITLE_H,TITLE_W,TFT_HEIGHT-TITLE_H);
   lv_refr_now(lv_refr_get_disp_refreshing());
 
-  voice_page.btn_sound_label = lv_label_align_create(mks_printer.user_src,voice_menu.btn_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*0-25,LV_ALIGN_IN_TOP_LEFT,&voice_style);//
-  voice_page.endstop_label = lv_label_align_create(mks_printer.user_src,voice_menu.endstop_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*1-25,LV_ALIGN_IN_TOP_LEFT,&voice_style);//
-  voice_page.print_label = lv_label_align_create(mks_printer.user_src,voice_menu.print_tone_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*2-25,LV_ALIGN_IN_TOP_LEFT,&voice_style);//
-  voice_page.no_filament_label = lv_label_align_create(mks_printer.user_src,voice_menu.no_filament_tone_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*3-25,LV_ALIGN_IN_TOP_LEFT,&voice_style);
+  voice_page.btn_sound_label = lv_label_align_create(mks_printer.user_src,voice_menu.btn_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*0,LV_ALIGN_IN_TOP_LEFT,&voice_style);//
+  voice_page.endstop_label = lv_label_align_create(mks_printer.user_src,voice_menu.endstop_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*1,LV_ALIGN_IN_TOP_LEFT,&voice_style);//
+  voice_page.print_label = lv_label_align_create(mks_printer.user_src,voice_menu.print_tone_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*2,LV_ALIGN_IN_TOP_LEFT,&voice_style);//
+  voice_page.no_filament_label = lv_label_align_create(mks_printer.user_src,voice_menu.no_filament_tone_sound,X_LEFT_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*3,LV_ALIGN_IN_TOP_LEFT,&voice_style);
 
   if(gCfgItems.voice_bottom)
     voice_page.btn_sound_imgbtn = lv_imgbtn_align_create(mks_printer.user_src,"F:/png_on.bin",LV_ALIGN_IN_TOP_RIGHT,X_RIGTH_ALIGN,BTN_Y_FIRST_OFFSET + BTN_Y_OFFSET*0, event_handler, ID_V_BTN);
